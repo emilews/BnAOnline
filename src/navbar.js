@@ -29,21 +29,15 @@ export default class Example extends React.Component {
               Eventos
             </DropdownToggle>
             <DropdownMenu>
-              <DropdownItem header>Header</DropdownItem>
-              <DropdownItem disabled>Action</DropdownItem>
-              <DropdownItem>Another Action</DropdownItem>
-              <DropdownItem divider />
-              <DropdownItem>Another Action</DropdownItem>
+              <DropdownItem>Chibi Anime Fest</DropdownItem>
+              <DropdownItem>Halloween no Matsuri</DropdownItem>
             </DropdownMenu>
           </Dropdown>
           <NavItem>
-            <NavLink href="#">Link</NavLink>
+            <NavLink href="#">Contacto</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="#">Another Link</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink disabled href="#">Disabled Link</NavLink>
+            <NavLink href="#">Login/Signup</NavLink>
           </NavItem>
         </Nav>
       </div>
