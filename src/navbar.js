@@ -19,7 +19,7 @@ export default class Example extends React.Component {
 
   render() {
     return (
-      <div class="fix">
+      <div>
         <Nav pills>
           <NavItem>
             <NavLink href="#" active>Home</NavLink>
