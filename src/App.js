@@ -41,12 +41,27 @@ class App extends Component {
     return (
       <div id="root">
         <Navbar />
-        <Slider>
-          {content.map((article, index) => <div key={index}>
-            <h2>{article.title}</h2>
-            <div>{article.description}</div>
-          </div>)}
-        </Slider>
+        <Slider className="slider-wrapper">
+			{content.map((item, index) => (
+				<div
+					key={index}
+					className="slider-content"
+					style={{ background: `url('${item.image}') no-repeat center center` }}
+				>
+					<div className="inner">
+						<h1>{item.title}</h1>
+						<p>{item.description}</p>
+						<button>{item.button}</button>
+					</div>
+					<section>
+						<img src={item.userProfile} alt={item.user} />
+						<span>
+							Posted by <strong>{item.user}</strong>
+						</span>
+					</section>
+				</div>
+			))}
+		</Slider>
       </div>
     );
   }
