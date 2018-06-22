@@ -1,46 +1,62 @@
-import React from 'react';
-import { Nav, NavItem, Dropdown, DropdownItem, DropdownToggle, DropdownMenu, NavLink } from 'reactstrap';
-
-export default class Example extends React.Component {
-  constructor(props) {
-    super(props);
-
+import React, { Component } from 'react';
+import { Navbar, NavbarBrand, NavbarNav, NavbarToggler, Collapse, NavItem, NavLink, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'mdbreact';
+import { BrowserRouter as Router } from 'react-router-dom';
+class NavbarFeatures extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            collapse: false,
+            isWideEnough: false,
+            dropdownOpen: false
+        };
+    this.onClick = this.onClick.bind(this);
     this.toggle = this.toggle.bind(this);
-    this.state = {
-      dropdownOpen: false
-    };
-  }
+    }
 
-  toggle() {
-    this.setState({
-      dropdownOpen: !this.state.dropdownOpen
-    });
-  }
+    onClick(){
+        this.setState({
+            collapse: !this.state.collapse,
+        });
+    }
 
-  render() {
-    return (
-      <div>
-        <Nav pills>
-          <NavItem>
-            <NavLink href="#" active>Home</NavLink>
-          </NavItem>
-          <Dropdown nav isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-            <DropdownToggle nav caret>
-              Eventos
-            </DropdownToggle>
-            <DropdownMenu>
-              <DropdownItem>Chibi Anime Fest</DropdownItem>
-              <DropdownItem>Halloween no Matsuri</DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
-          <NavItem>
-            <NavLink href="#">Contacto</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink href="#">Login/Signup</NavLink>
-          </NavItem>
-        </Nav>
-      </div>
-    );
-  }
+    toggle() {
+        this.setState({
+            dropdownOpen: !this.state.dropdownOpen
+        });
+    }
+
+    render() {
+        return (
+            <Router>
+                <Navbar color="indigo" dark expand="md" scrolling>
+                    <NavbarBrand href="/">
+                        <strong>Bakumatsu no Anime</strong>
+                    </NavbarBrand>
+                    { !this.state.isWideEnough && <NavbarToggler onClick = { this.onClick } />}
+                    <Collapse isOpen = { this.state.collapse } navbar>
+                        <NavbarNav left>
+                          <NavItem active>
+                              <NavLink class="nav-link"to="#">Home</NavLink>
+                          </NavItem>
+                          <NavItem>
+                              <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                              <DropdownToggle nav caret>Eventos</DropdownToggle>
+                              <DropdownMenu>
+                                  <DropdownItem href="#">Evento grande</DropdownItem>
+                                  <DropdownItem href="#">Halloween no Matsuri</DropdownItem>
+                              </DropdownMenu>
+                              </Dropdown>
+                          </NavItem>
+                        </NavbarNav>
+                        <NavbarNav right>
+                        <NavItem>
+                              <NavLink to="#">Login</NavLink>
+                          </NavItem>
+                        </NavbarNav>
+                    </Collapse>
+                </Navbar>
+            </Router>
+        );
+    }
 }
+export default NavbarFeatures;
