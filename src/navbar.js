@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Navbar, NavbarBrand, NavbarNav, NavbarToggler, Collapse, NavItem, NavLink, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'mdbreact';
 import { BrowserRouter as Router } from 'react-router-dom';
+import AnchorLink from 'react-anchor-link-smooth-scroll'
+
 class NavbarFeatures extends React.Component {
     constructor(props) {
         super(props);
@@ -28,7 +30,7 @@ class NavbarFeatures extends React.Component {
     render() {
         return (
             <Router>
-                <Navbar color="indigo" dark expand="md" scrolling>
+                <Navbar color="special-color-dark" dark expand="lg" fixed="top" scrolling>
                     <NavbarBrand href="/">
                         <strong>Bakumatsu no Anime</strong>
                     </NavbarBrand>
@@ -36,21 +38,24 @@ class NavbarFeatures extends React.Component {
                     <Collapse isOpen = { this.state.collapse } navbar>
                         <NavbarNav left>
                           <NavItem active>
-                              <NavLink class="nav-link"to="#">Home</NavLink>
+                              <NavLink to=""><AnchorLink href="#Home">Home</AnchorLink></NavLink>
                           </NavItem>
                           <NavItem>
                               <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
                               <DropdownToggle nav caret>Eventos</DropdownToggle>
                               <DropdownMenu>
-                                  <DropdownItem href="#">Evento grande</DropdownItem>
+                                  <DropdownItem><AnchorLink href="#events">Evento grande</AnchorLink></DropdownItem>
                                   <DropdownItem href="#">Halloween no Matsuri</DropdownItem>
                               </DropdownMenu>
                               </Dropdown>
                           </NavItem>
                         </NavbarNav>
                         <NavbarNav right>
+                        <NavItem active>
+                              <NavLink to="#">Contacto</NavLink>
+                          </NavItem>
                         <NavItem>
-                              <NavLink to="#">Login</NavLink>
+                              <NavLink className="nav-link" to="#">Login</NavLink>
                           </NavItem>
                         </NavbarNav>
                     </Collapse>
